@@ -1,0 +1,16 @@
+package com.shop.shoppify.dto.response;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ImageResponseDTO {
+
+    private int id;
+    private String value;
+}
