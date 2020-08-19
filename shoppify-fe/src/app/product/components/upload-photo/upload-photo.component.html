@@ -1,0 +1,37 @@
+<div class="simple-blue-bkg">
+    <div class="p-8 min-screen">
+        <div class="back">
+            <a class="back-link" [routerLink]="['/home']">
+                < Back</a>
+        </div>
+            <form class="upload-photo-btn" #uploadImageForm enctype="multipart/form-data">
+                <div class="hidden">
+                    <input #inputRef  type="file" [(ngModel)]="uploadPath" id="photoUpload" #photoUpload="ngModel" name="photoUpload" 
+                    (change)="onFileSelect($event)" accept=".jpg, .jpeg, .png," class="custom-file-input" />
+                </div>
+                <button class="secondary-button upload-button" (click)="openImage()">
+                    Select Photo 
+                </button>
+                <button class="button-primary" type="submit" (click)="uploadImage()" [disabled]="!fileValid">
+                        Upload <i class="fa fa-upload icon"></i>
+                </button>
+            </form>
+        <app-container>
+            <div class="upload-photo__container">
+                <h1 class="text-container">{{product.name}}</h1>
+                <h3 class="text-container">{{product.brandName}}</h3>
+                <br /><br />
+                <h2 *ngIf="!product.images || !product.images.length" class="text-container-black">No images added</h2>
+            </div>
+            <div class="images__container">
+                <div class="image" *ngFor="let image of product.images">
+                    <img [src]="'data:image/png;base64,' + image.value" alt="image" height="auto"
+                        width="300" />
+                    <div (click)="removeImage(image)" class="close-icon">
+                        <i class="fa fa-window-close icon"></i>
+                    </div>
+                </div>
+            </div>
+        </app-container>
+    </div>
+</div>

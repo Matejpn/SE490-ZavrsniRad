@@ -1,0 +1,62 @@
+<div class="simple-blue-bkg">
+    <div class="p-8 min-screen">
+        <div  class="back">
+            <a class="back-link" [routerLink]="['/home']">< Back</a>
+        </div>
+        <app-container>
+            <div class="product-container">
+                <div class="product-container__left-side">
+                    <b class="text-container size-50">{{ product.popularity }} </b> <span class="fa fa-star checked size-50"></span>
+                    <h1 class="text-container size-50">{{ product.name }}</h1>
+                    <br />
+                    <h2 class="text-container">Brand: {{ product.brandName }}</h2>
+                    <h2 class="text-container">Gender: {{ product.genre }}</h2>
+                    <h2 class="text-container">Relese Date: {{ product.releseDate | date: 'dd.MM.yyyy' }}</h2>
+                    <u><h1 class="text-container">Price: {{ product.price }} RSD</h1></u>
+                    <br /><br />
+
+                    <div class="product-container__selects">
+                        <div class="select-with-label">
+                            <label>Size:</label>
+                            <select #size [value]="pickedSize" class="primary-select" (change)="selectSize($event)">
+                                <option *ngFor="let productSize of product.productSizes" [value]="productSize.sizeId">{{productSize.size}}</option>
+                            </select>
+                        </div>
+    
+                        <div class="select-with-label">
+                            <label>Quantity:</label>
+                            <select #quantity [value]="pickedQuantity" class="primary-select" (change)="selectQuantity($event)">
+                                <option *ngFor="let q of quantities" [value]="q">{{q}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="secondary-button full-width" (click)="addToCart()">
+                            Add to Cart <i class="fa fa-cart-plus icon"></i> 
+                        </button>
+                </div>
+                
+                <div class="product-container__right-side">
+                    <button  *ngIf="role==='ADMIN'" class="secondary-button upload-button" (click)="uploadPhoto()">
+                        Upload Photo <i class="fa fa-upload icon"></i>
+                    </button>               
+                    <div class="product-container__image">
+                        <button (click)="previousImage()" [disabled]="previousDisabled()" class="product-container__image--button">
+                            <i class="fa fa-chevron-left large-icon"></i>
+                        </button>
+                        <div *ngIf="product.images && product.images.length > 0; then thenBlock; else elseBlock"></div>
+                        <ng-template #thenBlock>
+                            <img [src]="'data:image/png;base64,' + product.images[imagePosition].value" class="image" alt="image" height="auto" width="600" />
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            <img class="image" src="assets/images/placeholder.jpg" alt="image" height="auto" width="600" />
+                        </ng-template>
+                        <button (click)="nextImage()" [disabled]="nextDisabled()"  class="product-container__image--button">
+                            <i class="fa fa-chevron-right large-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+           
+        </app-container>
+    </div>
+</div>

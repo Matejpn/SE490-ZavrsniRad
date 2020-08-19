@@ -1,0 +1,75 @@
+@import "../../../../assets/scss/helpers/variables";
+
+.product-container {
+	display: flex;
+	&__left-side {
+		width: 35%;
+		text-align: center;
+		line-height: 50px;
+	}
+
+	&__right-side {
+		width: 65%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__image {
+		display: flex;
+		align-items: center;
+		min-height: 600px;
+
+		&--button {
+			cursor: pointer;
+			background-color: Transparent;
+			border: 0px;
+		}
+	}
+
+	&__selects {
+		display: flex;
+		justify-content: space-evenly;
+	}
+}
+
+.image {
+	transition: transform 0.5s;
+	margin: 0 auto;
+	box-sizing: content-box;
+	margin: 0 30px;
+}
+
+.image:hover {
+	transform: scale(1.1);
+	cursor: -moz-zoom-in;
+	cursor: -webkit-zoom-in;
+	cursor: zoom-in;
+}
+
+.checked {
+	color: $primary-gold;
+}
+
+select {
+	min-width: 100px;
+}
+
+label {
+	color: black;
+	font-weight: 600;
+}
+
+.secondary-button {
+	height: 50px;
+	font-size: 25px;
+	font-weight: 600;
+	margin-top: 20px;
+}
+
+.upload-button {
+	width: 180px;
+	height: 80px;
+	margin-bottom: 5px;
+}

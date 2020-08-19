@@ -1,0 +1,65 @@
+<div class="simple-blue-bkg">
+  <div class="categories">
+    <div 
+    *ngFor="let category of categories"
+    (click)="selectCategory(category.id)"
+    class="category"
+    [ngClass]="{'category__selected': filter.idCategory === category.id}"
+    >
+    <h1>{{category.name}}</h1>
+  </div>
+</div>
+<div class="p-8">
+  <app-container>
+      <div class="input-with-icon search">
+        <i class="fa fa-search icon"></i>
+        <input type="text" placeholder="Search" id="search" name="search" [(ngModel)]="searchTerm" #seach="ngModel"  (keyup)="searchChanged()"/>
+      </div>
+      <div class="filter-group">
+        <div class="filter">
+        <div class="select-with-label pr-10">
+          <select #brand [value]="filter.idBrand" class="primary-select" (change)="selectBrand(brand.value)">
+            <option [value]="0">Select Brand...</option>
+            <option *ngFor="let br of brands" [value]="br.id">{{br.name}}</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <input type="number" placeholder="Min Price" id="priceFrom" (change)="changeMinPrice($event)" (keyup)="changeMinPrice($event)" name="priceFrom"  [(ngModel)]="minPrice" #seach="ngModel"  />
+        </div>
+        <div class="input-group">
+            <input type="number" placeholder="Max Price" id="priceTo"  (change)="changeMaxPrice($event)"  (keyup)="changeMaxPrice($event)" name="priceTo" [(ngModel)]="maxPrice" #seach="ngModel"/>
+        </div>
+        <div class="input-group">
+          <input type="date" placeholder="Date From" id="dateFrom" (change)="changeDateFrom($event)"
+             name="dateFrom"  [(ngModel)]="dateFrom" #seach="ngModel"/>
+        </div>
+        <div class="input-group">
+          <input type="date" placeholder="Date To" id="dateTo" (change)="changeDateTo($event)"
+             name="dateTo" [(ngModel)]="dateTo" #seach="ngModel" /> 
+        </div>
+          <i (click)="refreshFilterParams()" class="fa fa-refresh icon"></i>
+        <div>
+        </div>
+      </div>
+        <div class="select-with-label">
+          <label for="order" class="select-label">Order by:</label>
+          <select #order [value]="orderBy" class="primary-select" (change)="orderChanged(order.value)">
+            <option value="releseDateDesc">Relese date desc</option>
+            <option value="releseDateAsc">Relese date asc</option>
+            <option value="priceDesc">Price desc</option>
+            <option value="priceAsc">Price asc</option>
+            <option value="popularityDesc">Popularity desc</option>
+            <option value="popularityAsc">Popularity asc</option>
+          </select>
+        </div>
+        
+    </div>
+      <h1 class="products__not-found" *ngIf="showNoProducts">No products found...</h1>
+      <div class="products">
+        <div class="product-card" *ngFor="let pr of products">
+          <app-product-card [product]="pr"></app-product-card>
+        </div>
+      </div>
+    </app-container>
+  </div>
+</div>

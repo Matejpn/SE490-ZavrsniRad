@@ -1,0 +1,65 @@
+<div class="simple-blue-bkg full-height">
+    <div class='flex-center h-100'>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class='card-wrapper'>
+            <div class="input-with-label">
+                <label>Product name</label>
+                <input type="text" placeholder="Type the name of the product" formControlName="name" />
+            </div>
+            <div class="select-with-label">
+                <label for="">Select product category</label>
+                <select formControlName="category" (ngModelChange)="onCategorySelect($event)" required>
+                    <option [ngValue]="null" [disabled]="true">Select category...</option>
+                    <option *ngFor="let category of categories" [ngValue]="category">{{ category.name | titlecase }}
+                    </option>
+                </select>
+            </div>
+            <div class="select-with-label pb-0">
+                <label for="">Select brand</label>
+                <select formControlName="brand" required>
+                    <option [ngValue]="null" [disabled]="true">Select brand...</option>
+                    <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name | titlecase}}</option>
+                </select>
+            </div>
+            <a class="secondary-link" [routerLink]="['/product/add-product/brands']">Or add a new one</a>
+
+            <div *ngIf="selectedCategory" formArrayName="productSizes">
+                <a type="button" class="secondary-link" (click)="addProductSize()">Add sizes</a>
+                <div *ngFor="let size of productSizes().controls; let i=index" [formGroupName]="i"
+                    class="border-bottom-green">
+                    <div class="select-with-label">
+                        <label>Select size for product</label>
+                        <select formControlName="size" required>
+                            <option [ngValue]="null" [disabled]="true">Select size...</option>
+                            <option *ngFor="let size of sizes" [ngValue]="size">{{ size.value }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="input-with-label pb-0">
+                        <label>How many sizes</label>
+                        <input type="number" placeholder="how many" formControlName="count" name="count" #count />
+                    </div>
+                    <a (click)="removeProductSize(i)" class="danger-link">Remove this size</a>
+                </div>
+            </div>
+
+            <div class="select-with-label">
+                <label>Select gender</label>
+                <select formControlName="gender" #gender name="gender" required>
+                    <option [ngValue]="null" [disabled]="true">Select gender...</option>
+                    <option *ngFor="let gender of genders" [ngValue]="gender">{{ gender | titlecase }}
+                    </option>
+                </select>
+            </div>
+            <div class="input-with-label">
+                <label>Product price</label>
+                <input type="number" placeholder="Price (RSD)" formControlName="price" #price name="price" reqired />
+            </div>
+            <div class="">
+                <button type="submit" class="primary-button full-width">
+                    Submit
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

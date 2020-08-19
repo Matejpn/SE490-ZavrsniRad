@@ -1,0 +1,27 @@
+<div class="navigation">
+  <div class="navigation__left">
+    <div [routerLink]="['/home']" routerLinkActive="active-route" class="navigation__element">
+      Products
+    </div>
+    <div *ngIf="role" [routerLink]="['/order/all']" routerLinkActive="active-route" class="navigation__element">
+      Orders
+    </div>
+    <div *ngIf="role==='ADMIN'" [routerLink]="['/product/add-product']" routerLinkActive="active-route"
+      class="navigation__element">
+        Administration
+    </div>
+  </div>
+  <div class="navigation__right">
+    <a *ngIf="role==='USER'" [routerLink]="['/cart']" routerLinkActive="active-route" class="cart-icon">
+      <i class="fa fa-shopping-cart icon"></i>
+    </a>
+    <div *ngIf="role" class="navigation__element" (click)="logOut()">
+      Sign Out
+    </div>
+    <div *ngIf="!role" [routerLink]="['']" routerLinkActive="active-route" [routerLinkActiveOptions]="{ exact: true }"
+      class="navigation__element">
+      Sign In
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

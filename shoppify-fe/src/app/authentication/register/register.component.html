@@ -1,0 +1,67 @@
+<div class="simple-blue-bkg full-height space-even-desktop">
+  <div>
+    <app-welcome-side #welcomeSide [isLogin]="false"></app-welcome-side>
+  </div>
+  <div class="card-wrapper percent-45">
+    <form #registrationForm="ngForm" autocomplete="off">
+      <div class="input-with-icon">
+        <i class="fa fa-envelope icon"></i>
+        <input type="email" id="email" name="email" placeholder="Enter e-mail address" [(ngModel)]="user.email"
+          #email="ngModel" required />
+      </div>
+      <div class="grid-2">
+        <div class="input-with-icon">
+          <i class="fa fa-key icon"></i>
+          <input type="password" id="password" name="password" placeholder="Enter password" [(ngModel)]="user.password"
+            #password required />
+        </div>
+        <div class="input-with-icon">
+          <i class="fa fa-key icon"></i>
+          <input type="password" id="repeatPass" name="repeatPass" placeholder="Repeat password"
+            [(ngModel)]="user.repeatPass" #repeatPass required />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="input-with-icon">
+          <i class="fa fa-user icon"></i>
+          <input type="text" placeholder="Enter first name" id="firstName" name="firstName"
+            [(ngModel)]="user.firstName" />
+        </div>
+        <div class="input-with-icon">
+          <i class="fa fa-user icon"></i>
+          <input type="text" placeholder="Enter last name" id="lastName" name="lastName" [(ngModel)]="user.lastName" />
+        </div>
+      </div>
+      <div class="input-with-icon">
+        <i class="fa fa-mobile icon"></i>
+        <input type="text" placeholder="Phone number" id="cellphone" name="cellphone" [(ngModel)]="user.phoneNumber"
+          #phoneNumber="ngModel" />
+      </div>
+      <div class="input-with-icon">
+        <i class="fa fa-map-marker icon"></i>
+        <input type="text" placeholder="Address" id="address" name="address" [(ngModel)]="user.address" />
+      </div>
+      <div class="grid-2">
+        <div class="input-with-icon">
+          <i class="fa fa-map-marker icon"></i>
+          <input type="text" placeholder="Postal code" id="postalCode" name="postalCode"
+            [(ngModel)]="user.postalCode" />
+        </div>
+        <div class="input-with-icon">
+          <i class="fa fa-map-marker icon"></i>
+          <input type="text" placeholder="City" id="city" name="city" [(ngModel)]="user.city" #city="ngModel" />
+        </div>
+      </div>
+      <div class="input-with-icon">
+        <i class="fa fa-map-marker icon"></i>
+        <input type="text" placeholder="Country" id="country" name="country" [(ngModel)]="user.country" />
+      </div>
+
+      <div class="center">
+        <button class="primary-button full-width" (click)="onSubmit()">
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

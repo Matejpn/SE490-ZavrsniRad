@@ -1,0 +1,41 @@
+@import "../../../../assets/scss/helpers/variables";
+.navigation {
+	background-color: $primary-darkblue;
+	height: 45px;
+	width: 100%;
+	font-weight: 600;
+	font-size: $mp5;
+	color: white;
+	padding: 0 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&__element {
+		cursor: pointer;
+		margin: 0 10px;
+	}
+
+	&__right {
+		display: flex;
+	}
+
+	&__left {
+		display: flex;
+	}
+}
+
+.active-route {
+	color: $primary-lightblue;
+}
+
+.cart-icon {
+	font-size: 24px;
+	margin-right: 20px;
+	cursor: pointer;
+	color: white;
+
+	&:hover {
+		color: $primary-darkgray;
+	}
+}

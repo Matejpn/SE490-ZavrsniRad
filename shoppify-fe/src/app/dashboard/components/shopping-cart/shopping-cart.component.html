@@ -1,0 +1,43 @@
+<div class="simple-blue-bkg">
+    <div class="p-8 min-screen">
+        <div class="back">
+            <a class="back-link" (click)="backClicked()">
+                < Back</a>
+        </div>
+        <app-container>
+            <h1 class="not-found" *ngIf="!items || !items.length">Shopping cart empty!</h1>
+            <div class="shopping-cart__items">
+                <div class="shopping-cart__item" *ngFor="let product of items">
+                    <div class="shopping-cart__item--left-part">
+                        <div *ngIf="product.product.images.length > 0; then thenBlock; else elseBlock"></div>
+                        <ng-template #thenBlock>
+                            <img [src]="'data:image/png;base64,' + product.product.images[0].value" class="image" alt="image" height="145" width="auto" />
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            <img src="assets/images/placeholder.jpg" alt="image" height="145" width="auto" />
+                        </ng-template>
+                    </div>
+                    <div class="shopping-cart__item--right-part">
+                            <h1 class="text-container">{{ product.product.name }}</h1>
+                            <br /><br />
+                            <h3 class="text-container">Brand: {{ product.product.brandName }}</h3>
+                            <h3 class="text-container">Size: {{ getProductSize(product) }}</h3>
+                            <h3 class="text-container">Quantity: {{ product.quantity }}</h3>
+                            <div class="shopping-cart__price">
+                                <h1 class="shopping-cart__price-text">Price: {{ product.product.price * product.quantity }} RSD</h1>
+                            </div>
+                         <div (click)="removeProduct(product)" class="trash-icon"><i class="fa fa-trash"></i></div>                    
+                    </div>
+                </div>
+            </div>
+            <div class="total-price--container">
+                <div class="total-price">
+                    <h1>Total Price: {{ getTotalPrice() }} RSD</h1>
+                    <button (click)="onSubmit()" [disabled]="!items || !items.length" class="secondary-button">
+                        Purchase
+                    </button>
+                </div>
+            </div>
+        </app-container>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="simple-blue-bkg full-height space-even-desktop">
+  <div>
+    <app-welcome-side #welcomeSide [isLogin]="true"></app-welcome-side>
+  </div>
+  <div class="card-wrapper percent-45">
+    <form action="">
+      <div class="input-with-icon">
+        <i class="fa fa-envelope icon"></i>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your e-mail address"
+          [(ngModel)]="emailInput"
+          #email="ngModel"
+          required
+        />
+      </div>
+      <div class="input-with-icon">
+        <i class="fa fa-key icon"></i>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter password"
+          [(ngModel)]="passwordInput"
+          #password="ngModel"
+          required
+        />
+      </div>
+    </form>
+    <div class="">
+      <button (click)="onSubmit()" class="primary-button full-width">
+        Login
+      </button>
+    </div>
+  </div>
+</div>

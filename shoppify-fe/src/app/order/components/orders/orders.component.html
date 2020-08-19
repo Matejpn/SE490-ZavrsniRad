@@ -1,0 +1,28 @@
+<div class="simple-blue-bkg">
+    <div class="p-8 min-screen">
+        <app-container>
+                <div class="orders-container">
+                    <div *ngFor="let order of orders" class="orders-item">
+                        <div class="orders-item-left">
+                            <b class="label-name">{{order.user.firstName}} {{order.user.lastName}}</b>
+                            <b class="label-date">Date of Order: {{order.date | date:'dd.MM.yyyy'}}</b>
+                            <b class="label-price">Total Price: {{order.totalPrice}} RSD</b>
+                        </div>
+                        <div class="orders-item-middle">
+                            <div *ngFor="let item of order.items" class="product-item">
+                                {{item.product.name}} <b>x</b> {{item.quantity}} <b>=</b> {{item.quantity * item.product.price}}
+                            </div>                        
+                        </div>
+                        <div class="orders-item-right">
+                            <b>
+                               Status: <label [ngClass]="order.isConfirmed ? 'orders-item-confirmed' : 'orders-item-not-confirmed'">
+                               {{order.isConfirmed ? 'CONFIRMED' : 'PENDING'}}</label>
+                            </b>
+                            <br/><br />
+                            <button (click)="confirmOrder(order.id)" *ngIf="!order.isConfirmed && role==='ADMIN'" class="confirm-button">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+        </app-container>
+    </div>
+</div>

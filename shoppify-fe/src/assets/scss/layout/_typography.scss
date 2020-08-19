@@ -1,0 +1,52 @@
+h1,
+h2,
+h3,
+h4,
+p {
+	color: $neutral;
+}
+.heading-h1 {
+	font-size: 30px;
+	padding-bottom: 10px;
+}
+
+.paragraph-basic {
+	font-weight: 400;
+	padding-bottom: 5px;
+}
+
+.size-50 {
+	font-size: 50px;
+}
+
+.text-blue {
+	color: $primary-darkblue;
+}
+
+.text-error {
+	color: $error;
+}
+
+.text-container {
+	color: $primary-darkblue;
+}
+
+button:disabled:hover {
+	cursor: not-allowed;
+}
+
+.back-link {
+	color: white;
+	text-decoration: none;
+}
+
+.back {
+	height: 50px;
+	font-size: 20px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.border-bottom-green {
+	border-bottom: 1px solid $primary-darkblue;
+}

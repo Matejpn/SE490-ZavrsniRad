@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card__info">
+    <h2 class="text-container">{{ product.name }}</h2>
+    <p class="text-container text-padding">Brand: {{ product.brandName }}</p>
+
+    <div
+      *ngIf="product.images.length > 0; then thenBlock; else elseBlock"
+    ></div>
+    <ng-template #thenBlock>
+      <img
+        [src]="'data:image/png;base64,' + product.images[0].value"
+        class="image"
+        alt="image"
+        height="auto"
+        width="250"
+      />
+    </ng-template>
+    <ng-template #elseBlock>
+      <img
+        src="assets/images/placeholder.jpg"
+        alt="image"
+        height="auto"
+        width="250"
+      />
+    </ng-template>
+  </div>
+  <div class="card__footer">
+    <div>
+     <b class="text-container">{{ product.popularity }} </b> <span class="fa fa-star checked"></span>
+    </div>
+    <p class="text-container">Gender: {{ product.genre }}</p>
+    <h4 class="text-container">Price: {{ product.price }} RSD</h4>
+    <button (click)="viewProduct()" class="secondary-button full-width">
+      View Product
+    </button>
+  </div>
+</div>

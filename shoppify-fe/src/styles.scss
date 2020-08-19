@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./assets/scss/helpers/variables";
+@import "./assets/scss/helpers/mixins";
+@import "./assets/scss/base";
+@import "./assets/scss/layout/positions";
+@import "./assets/scss/layout/typography";
+@import "./assets/scss/layout/form";
+
+@import "~ngx-toastr/toastr";

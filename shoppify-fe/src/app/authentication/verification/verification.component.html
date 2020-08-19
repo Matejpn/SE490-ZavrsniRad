@@ -1,0 +1,17 @@
+<div class="simple-blue-bkg full-height flex-center">
+  <div *ngIf="!error" class="card-wrapper">
+    <h4 class="text-blue">Proceed Your Verification</h4>
+    <br />
+    <button class="primary-button full-width" (click)="verifyUser()">
+      Confirm
+    </button>
+  </div>
+
+  <div *ngIf="error" class="card-wrapper">
+    <h4 class="text-error">Something went wrong</h4>
+    <br />
+    <button class="primary-button full-width" [routerLink]="['/']">
+      Home
+    </button>
+  </div>
+</div>

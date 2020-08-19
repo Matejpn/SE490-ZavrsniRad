@@ -1,0 +1,16 @@
+<div class="simple-blue-bkg full-height">
+    <div class='flex-center h-100'>
+        <div *ngIf="addBrands" class='card-wrapper'>
+            <form action="" #brandForm="ngForm" (ngSubmit)="addBrand()">
+                <div class="input-with-label mt-3">
+                    <label>Brand name</label>
+                    <input type="text" placeholder="Enter name of the brand" id="brand" name="brand"
+                        [(ngModel)]="brandName" />
+                </div>
+                <button type="submit" class="primary-button full-width">
+                    Add brand
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
